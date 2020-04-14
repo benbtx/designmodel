@@ -1,0 +1,1157 @@
+# designmodel
+设计模式
+# 六大原则
+
+1.单一职责原则:只做一件事情
+2.里氏替换原则:同岗位人之间可以互相调换
+3.依赖倒转原则:应用层依赖底层，但是底层不依赖应用层
+4.接口隔离原则:模块只声明自己需要的接口
+5.迪米特法则:在你眼里，我应该是黑盒。
+6.开闭原则:你只能看，不能改
+
+
+
+1. 开闭原则： 对扩展开放，对修改关闭
+2. 里氏转换原则： 子类继承父类，单独完全可以运行
+3. 依赖倒转原则： 引用一个对象，如果这个对象有底层类型，直接引用底层类型
+4. 接口隔离原则： 每一个接口应该是一种角色
+5. 合成/聚合复用原则： 新的对象应使用一些已有的对象，使之成为新对象的一部分
+6. 迪米特原则： 一个对象应对其他对象有尽可能少的了解
+
+> 我会在下面设计的模式中，声明使用到对应的原则
+
+# 为什么要尽量使用白话
+
+> 纯术语的文章太多，不利于归纳成记忆点，尤其是实际应用中。所以我尝试着能否使用白话或者极度精简的文字去分解这些复杂侃长的语句。
+
+# 为什么要使用设计模式
+ > 开发人员A碰到了一个问题，就找开发B,开发B说用"xxxx设计模式就行了"，如果这个时候开发A不懂设计模式，那他们就无法交流了。就如同我们在汉语里使用成语一样，当你在交流中使用一个成语的时候，是不会去讲述这个成语背后的故事的。因此，一个合格的开发人员，必须掌握设计模式这个“标准词汇”
+ > 但是过度复杂化的设计模式也不可取，保持一个代码与模式的平衡是一个非常重要的事情。
+ >
+ > <!-- more --> 
+
+本质：将软件中变化的部分和不变的部分分开
+
+# 设计模式的类型
+
+# 1．创建型模式
+
+创建型模式，就是创建对象的模式，抽象了实例化的过程。它帮助一个系统独立于如何创建、组合和表示它的那些对象。关注的是对象的创建，创建型模式将创建对象的过程进行了抽象，也可以理解为将创建对象的过程进行了封装，作为客户程序仅仅需要去使用对象，而不再关系创建对象过程中的逻辑。
+
+社会化的分工越来越细，自然在软件设计方面也是如此，因此对象的创建和对象的使用分开也就成为了必然趋势。因为对象的创建会消耗掉系统的很多资源，所以单独对对象的创建进行研究，从而能够高效地创建对象就是创建型模式要探讨的问题。这里有6个具体的创建型模式可供研究，它们分别是：
+
+- 简单工厂模式（Simple Factory）
+- 工厂方法模式（Factory Method）
+- 抽象工厂模式（Abstract Factory）
+- 创建者模式（Builder）
+- 原型模式（Prototype）
+- 单例模式（Singleton）
+
+> 简单工厂模式不是GoF总结出来的23种设计模式之一
+
+# 2．结构型模式
+
+结构型模式是为解决怎样组装现有的类，设计它们的交互方式，从而达到实现一定的功能目的。结构型模式包容了对很多问题的解决。例如：扩展性（外观、组成、代理、装饰）、封装（适配器、桥接）。
+
+在解决了对象的创建问题之后，对象的组成以及对象之间的依赖关系就成了开发人员关注的焦点，因为如何设计对象的结构、继承和依赖关系会影响到后续程序的维护性、代码的健壮性、耦合性等。对象结构的设计很容易体现出设计人员水平的高低，这里有7个具体的结构型模式可供研究，它们分别是：
+
+- 外观模式/门面模式（Facade门面模式）
+- 适配器模式（Adapter）
+- 代理模式（Proxy）
+- 装饰模式（Decorator）
+- 桥梁模式/桥接模式（Bridge）
+- 组合模式（Composite）
+- 享元模式（Flyweight）
+
+# 3．行为型模式
+
+行为型模式涉及到算法和对象间职责的分配，行为模式描述了对象和类的模式，以及它们之间的通信模式，行为模式刻划了在程序运行时难以跟踪的复杂的控制流可分为行为类模式和行为对象模式。1. 行为类模式使用继承机制在类间分派行为。2. 行为对象模式使用对象聚合来分配行为。一些行为对象模式描述了一组对等的对象怎样相互协作以完成其中任何一个对象都无法单独完成的任务。
+
+在对象的结构和对象的创建问题都解决了之后，就剩下对象的行为问题了，如果对象的行为设计的好，那么对象的行为就会更清晰，它们之间的协作效率就会提高，这里有11个具体的行为型模式可供研究，它们分别是：
+
+- 模板方法模式（Template Method）
+- 观察者模式（Observer）
+- 状态模式（State）
+- 策略模式（Strategy）
+- 职责链模式（Chain of Responsibility）
+- 命令模式（Command）
+- 访问者模式（Visitor）
+- 调停者模式（Mediator）
+- 备忘录模式（Memento）
+- 迭代器模式（Iterator）
+- 解释器模式（Interpreter）
+
+## 三者之间的区别和联系
+
+> 创建型模式提供生存环境，结构型模式提供生存理由，行为型模式提供如何生存。
+
+1. 创建型模式为其他两种模式使用提供了环境。
+2. 结构型模式侧重于接口的使用，它做的一切工作都是对象或是类之间的交互，提供一个门。
+3. 行为型模式顾名思义，侧重于具体行为，所以概念中才会出现职责分配和算法通信等内容。
+
+# 五大创建型模式
+
+> 关于创造型模式
+
+## 单例模式(Singleton Pattern)
+
+###一句话总结：虽然我有很多网名，但是全世界就一个我
+
+###代码
+
+```
+function Menu() {
+    // 判断是否存在实例
+    if (typeof Universe.instance === 'object') {
+        return Universe.instance;
+    }
+    // 其它内容
+    this.food =["hanbao","kele"];
+    // 缓存
+    Menu.instance = this;
+    // 隐式返回this
+}
+
+// 测试
+var zhizhi = new Menu();
+var qiantai=new Menu();
+console.log(uni === uni2); // true
+```
+
+###定义
+
+> 保证系统内部只有唯一一个对应的实例对象，又细分为最开始就实例化（简单粗暴），和第一次使用的时候实例化（可能需要额外的代码来实现这块功能）
+>
+> 单例模式在[多线程](https://zh.wikipedia.org/wiki/线程)的应用场合下必须小心使用。如果当唯一实例尚未创建时，有两个线程同时调用创建方法，那么它们同时没有检测到唯一实例的存在，从而同时各自创建了一个实例，这样就有两个实例被构造出来，从而违反了单例模式中实例唯一的原则。 解决这个问题的办法是为指示类是否已经实例化的变量提供一个互斥锁(虽然这样会降低效率)。
+>
+> 通常单例模式在[Java语言](https://zh.wikipedia.org/wiki/Java语言)中，有两种构建方式：
+>
+> - 懒汉方式。指全局的单例实例在第一次被使用时构建。
+> - 饿汉方式。指全局的单例实例在类装载时构建。
+
+###应用
+
+* 就像KFC中的菜单，不管你在app还是前天，或者纸质菜单上查看，永远只有一份实例。
+
+
+## 简单工厂模式(Simple Factory)
+
+## 一句话就是 自动奶茶机
+
+## 代码
+
+```
+ var request1 = ajax('cgi.xx.com/xxx' , ''get' );
+ 
+request1.start();
+ 
+request1.done( fn );
+ 
+var request2 = ajax('cgi.xx.com/xxx' , ''jsonp' );
+ 
+request2.start();
+ 
+request2.done( fn );
+```
+
+
+
+## 定义
+
+> 这种模式主要用在所实例化的类型在编译期并不能确定， 而是在执行期决定的情况.说的通俗点，就像公司茶水间的饮料机，要咖啡还是牛奶取决于你按哪个按钮。
+>
+> 你只需要一个正确的参数，就可以获取到你所需要的对象，而无需知道其创建的具体细节。
+>
+> 缺点也很明显，所有逻辑都封装在工厂类呢，但是根据场景使用 还是会很优雅。属于基础的设计模式
+
+## 应用
+
+KFC饮料机器
+
+
+
+## 抽象工厂(Abstract Factory)
+
+### 一句话 interface
+
+### 定义
+
+就是通过类的抽象使得业务适用于一个产品类簇的创建，而不负责某一类产品的实例。
+
+JS中是没有直接的抽象类的，abstract是个保留字，但是还没有实现，因此我们需要在类的方法中抛出错误来模拟抽象类，如果继承的子类中没有覆写该方法而调用，就会抛出错误。
+
+工厂是一个抽象类，它不能够直接被实例化，工厂的作用是制定产品族类的结构。土一点的理解方式就是，interface。
+
+### 代码
+
+```
+/**
+* 实现subType类对工厂类中的superType类型的抽象类的继承
+* @param subType 要继承的类
+* @param superType 工厂类中的抽象类type
+*/
+const VehicleFactory = function(subType, superType) {
+  if (typeof VehicleFactory[superType] === 'function') {
+    function F() {
+      this.type = '车辆'
+    } 
+    F.prototype = new VehicleFactory[superType]()
+    subType.constructor = subType
+    subType.prototype = new F()                // 因为子类subType不仅需要继承superType对应的类的原型方法，还要继承其对象属性
+  } else throw new Error('不存在该抽象类')
+}
+
+VehicleFactory.Car = function() {
+  this.type = 'car'
+}
+VehicleFactory.Car.prototype = {
+  getPrice: function() {
+    return new Error('抽象方法不可使用')
+  },
+  getSpeed: function() {
+    return new Error('抽象方法不可使用')
+  }
+}
+
+const BMW = function(price, speed) {
+  this.price = price
+  this.speed = speed
+}
+VehicleFactory(BMW, 'Car')        // 继承Car抽象类
+BMW.prototype.getPrice = function() {        // 覆写getPrice方法
+  console.log(`BWM price is ${this.price}`)
+}
+BMW.prototype.getSpeed = function() {
+  console.log(`BWM speed is ${this.speed}`)
+}
+
+const baomai5 = new BMW(30, 99)
+baomai5.getPrice()                          // BWM price is 30
+baomai5 instanceof VehicleFactory.Car     
+```
+
+### 应用
+
+KFC汉堡类型：面包片+调料+肉+蔬菜+面包片
+
+## 建造者模式（Builder Pattern）
+
+###一句话总结
+
+### 定义
+
+### 代码
+
+### 应用
+
+
+
+1.简述：将一个复杂对象的--构建--与它的表示分离，使得同样的构建过程可以创建.一步步构造一个复杂对象，返回一个完整的对象``
+2.代码
+
+```
+// #建造者模式 
+```
+
+
+// 抽象建造者
+var Car = function (param) {
+    // 速度
+    this.speed = param && param.speed || '0';
+    // 重量
+    this.weight = param && param.weight || '0';
+}
+
+
+Car.prototype = {
+    // 获取速度
+    getSpeed: function () {
+        return this.speed;
+    },
+    // 获取重量
+    getWeight: function () {
+        return this.weight
+    }
+}
+
+// 轮胎部件类
+var Tyre = function (type) {
+    var that = this;
+    // 构造器
+    // 构造函数中通过传入的type类型设置相对应的轮胎尺寸
+    (function (type,that) {
+        switch (type) {
+            case 'small':
+            that.tyre = '小号轮胎';
+            that.tyreIntro = '正在使用小号轮胎';
+            break;
+            case 'normal':
+            that.tyre = '中号轮胎';
+            that.tyreIntro = '正在使用中号轮胎';
+            break;
+            case 'big':
+            that.tyre = '大号轮胎';
+            that.tyreIntro = '正在使用大号轮胎';
+            break;
+        }
+    })(type,this);
+}
+
+
+Tyre.prototype = {
+    // 更换轮胎的方法
+    changeType: function (type) {
+        that.tyre = type;
+        that.tyreIntro = '正在使用'+type;
+    }
+}
+
+
+// 发动机部件类
+var Engine = function (type) {
+    var that = this;
+    // 构造器
+    // 构造函数中通过传入的type类型设置相对应的发动机类型
+    (function (type,that) {
+        switch (type) {
+            case 'small':
+            that.engine = '小号发动机';
+            that.engineIntro = '正在使用小号发动机';
+            break;
+            case 'normal':
+            that.engine = '中号发动机';
+            that.engineIntro = '正在使用中号发动机';
+            break;
+            case 'big':
+            that.engine = '大号发动机';
+            that.engineIntro = '正在使用大号发动机';
+            break;
+        }
+    })(type,this);
+}
+
+
+Engine.prototype = {
+    // 更换发动机的方法
+    changeType: function (type) {
+        that.engine = type;
+        that.engineIntro = '正在使用'+type;
+    }
+}
+
+/**
+ * 指挥者,建造一个奔驰车的类
+ * @param {*轮胎类型 small normal big} tyre 
+ * @param {*发动机类型 small normal big} engine 
+ * @param {*车辆基本属性 param.speed:速度 param.weight: 重量} param 
+ */
+var BenChi = function (tyre,engine,param) {
+    // 创建一个车辆缓存对象
+    var _car = new Car(param);ckplayer 隐藏控制
+    // 创建车辆的轮胎
+    _car.tyreInfo = new Tyre(tyre);
+    // 创建车辆的发动机
+    _car.engineInfo = new Engine(engine);
+    // 将创建的车辆对象返回
+    return _car;
+}
+
+// 具体建造者 实例化奔驰车类
+var benchi1 = new BenChi('small','big',{speed: 200,weight: '200'});
+console.log(benchi1.speed);// 200
+console.log(benchi1.weight);// 200
+console.log(benchi1.tyreInfo.tyre);// 小号轮胎
+console.log(benchi1.tyreInfo.tyreIntro);// 正在使用小号轮胎
+console.log(benchi1.engineInfo.engine);// 大号发动机
+console.log(benchi1.engineInfo.engineIntro);// 正在使用大号发动机
+  ```
+  3.优点:每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。
+  4.缺点
+  5.白话总结:建造者模式主要用于“分布构建一个复杂的对象”
+  ```
+
+## 原型模式
+
+减少new，使用create直接创建对象。
+
+# 行为型模式
+
+## 模版方式
+
+>类似管控的视频模块，应该要使用这个模式,就是预设好具体的口子给继承方使用。
+>
+>1.抽象方法：父类中只声明但不加以实现，而是定义好规范，然后由它的子类去实现。
+>
+>2.模版方法：由抽象类声明并加以实现。一般来说，模版方法调用抽象方法来完成主要的逻辑功能，并且，模版方法大多会定义为final类型，指明主要的逻辑功能在子类中不能被重写。
+>
+>3.钩子方法：由抽象类声明并加以实现。但是子类可以去扩展，子类可以通过扩展钩子方法来影响模版方法的逻辑。
+
+  ```javascript
+/* 抽象父类：饮料 */
+var Beverage = function(){};
+// (1) 把水煮沸
+Beverage.prototype.boilWater = function() {
+    console.log("把水煮沸");
+};
+// (2) 沸水浸泡
+Beverage.prototype.brew = function() {
+    throw new Error("子类必须重写brew方法");
+};
+// (3) 倒进杯子
+Beverage.prototype.pourInCup = function() {
+    throw new Error("子类必须重写pourInCup方法");
+};
+// (4) 加调料
+Beverage.prototype.addCondiments = function() {
+    throw new Error("子类必须重写addCondiments方法");
+};
+
+/* 模板方法 */
+Beverage.prototype.init = function() {
+    this.boilWater();
+    this.brew();
+    this.pourInCup();
+    this.addCondiments();
+}
+
+/* 实现子类 Coffee*/
+var Coffee = function(){};
+Coffee.prototype = new Beverage();
+// 重写非公有方法
+Coffee.prototype.brew = function() {
+    console.log("用沸水冲泡咖啡");
+};
+Coffee.prototype.pourInCup = function() {
+    console.log("把咖啡倒进杯子");
+};
+Coffee.prototype.addCondiments = function() {
+    console.log("加牛奶");
+};
+var coffee = new Coffee();
+coffee.init();
+
+  ```
+
+通过模板方法模式，在父类中封装了子类的算法框架。这些算法框架在正常状态下是适用大多数子类的，但也会出现“个性”子类。
+如上述流程，加调料是可选的。
+钩子方法可以解决这个问题，放置钩子是隔离变化的一种常见手段。
+
+```javascript
+/* 添加钩子方法 */
+Beverage.prototype.customerWantsCondiments = function() {
+    return true;
+};
+Beverage.prototype.init = function() {
+    this.boilWater();
+    this.brew();
+    this.pourInCup();
+    if(this.customerWantsCondiments()) {
+        this.addCondiments();
+    }
+}
+
+/* 实现子类 Tea*/
+var Tea = function(){};
+Tea.prototype = new Beverage();
+// 重写非公有方法
+Tea.prototype.brew = function() {
+    console.log("用沸水冲泡茶");
+};
+Tea.prototype.pourInCup = function() {
+    console.log("把茶倒进杯子");
+};
+Tea.prototype.addCondiments = function() {
+    console.log("加牛奶");
+};
+Tea.prototype.customerWantsCondiments = function() {
+    return window.confirm("需要添加调料吗？");
+};
+var tea = new Tea();
+tea.init();
+```
+
+JavaScript没有提供真正的类式继承，继承是通过对象与对象之间的委托来实现的。
+
+## 中介者模式
+
+>面向对象设计鼓励将行为分布到各个对象中，把对象划分成更小的粒度，有助于增强对象的可复用性。但由于这些细粒度对象之间的联系激增，又可能反过来降低它们的可复用性。
+>中介者模式的作用就是解除对象与对象之间的紧耦合关系。
+>
+>之前卓锐的路网系统就是这样开发，但是和观察者好像有点雷同。查阅资料以后发现：
+>
+>**中介者(mediator)强调的是同事(colleague)类之间的交互**
+>
+>**而观察者(observer)中的目标类(subject)强调是目标改变后对观察者进行统一的通讯**
+>
+>**两者非常相同的一点就是:中介者需要持有并且知道所有的同事类,而目标类也必须持有所有的目标类,但是是一目标类的接口引用方式持有,所以说目标类是不知道观察者的,所有的观察者都是一样的**
+>
+>其实从名称考虑，确实相当于是房产中介在租房和房东之间的关系。
+
+## 命令模式
+
+> 命令模式比较容易设计一个命令队列( 容易AOP)，在需求的情况下比较容易将命令计入日志，并且允许接受请求的一方决定是否需要调用，而且可以实现对请求的撤销和重设，而且由于新增的具体类不影响其他的类，所以很容易实现。
+>
+> 
+
+```javascript
+$(function () {
+
+    var CarManager = {
+
+        // 请求信息
+        requestInfo: function (model, id) {
+            return 'The information for ' + model +
+        ' with ID ' + id + ' is foobar';
+        },
+
+        // 购买汽车
+        buyVehicle: function (model, id) {
+            return 'You have successfully purchased Item '
+        + id + ', a ' + model;
+        },
+
+        // 组织view
+        arrangeViewing: function (model, id) {
+            return 'You have successfully booked a viewing of '
+        + model + ' ( ' + id + ' ) ';
+        }
+    };
+})();
+//来看一下上述代码，通过调用函数来简单执行manager的命令，然而在一些情况下，我们并不想直接调用对象内部的方法。这样会增加对象与对象间的依赖。现在我们来扩展一下这个CarManager 使其能够接受任何来自包括model和car ID 的CarManager对象的处理请求。根据命令模式的定义，我们希望实现如下这种功能的调用：
+
+CarManager.execute({ commandType: "buyVehicle", operand1: 'Ford Escort', operand2: '453543' });
+//根据这样的需求，我们可以这样啦实现CarManager.execute方法：
+
+CarManager.execute = function (command) {
+    return CarManager[command.request](command.model, command.carID);
+};
+//改造以后，调用就简单多了，如下调用都可以实现（当然有些异常细节还是需要再完善一下的）：
+
+CarManager.execute({ request: "arrangeViewing", model: 'Ferrari', carID: '145523' });
+CarManager.execute({ request: "requestInfo", model: 'Ford Mondeo', carID: '543434' });
+CarManager.execute({ request: "requestInfo", model: 'Ford Escort', carID: '543434' });
+CarManager.execute({ request: "buyVehicle", model: 'Ford Escort', carID: '543434' });
+```
+
+
+
+**设计模式的核心思想是不是都插入一个中间层，把业务集中到中间层去？**
+
+## 职责链模式
+
+### 定义
+
+职责连是由多个不同的对象组成的，有发送者跟接收者，分别负责信息的发送跟接收，其中，链中第一个对象是 职责连是由多个不同的对象组成的，发送者是发送请求的对象，接收者接收请求并且对其进行处理或传递的对象。基本流程如下：
+
+1. 发送者知道链中的第一个接收者，它向这个接收者发送该请求。
+2. 每一个接收者都对请求进行分析，然后要么处理它，要么它往下传递。
+3. 每一个接收者知道其他的对象只有一个，即它在链中的下家(successor)。
+4. 如果没有任何接收者处理请求，那么请求会从链中离开。
+
+职责链模式是个链式结构，请求在链中的节点之间依次传递，直到有一个对象能处理该请求为止。如果没有任何对象处理该请求的话，那么请求就会从链中离开
+
+### 事例代码
+
+>假设这么一个场景：
+>我们负责一个售卖手机的电商网站，经过分别缴纳500元定金和200元定金的两轮预定后，到了正式购买阶段。针对预定用户实行优惠，支付过500元定金的用户会收到100元的商城优惠券，支付过200元定金的用户会收到50元的商城优惠券，没有支付定金的用户归为普通购买，且在库存有限的情况下不一定保证买到。
+
+```
+/* 传统方式实现 */
+// orderType：[1:500, 2:200, 3:普通]，isPaid：true/false，stock：库存量
+var order = function(orderType, isPaid, stock) {
+    if(orderType === 1) {
+        if(isPaid) {
+            console.log("500元定金预购，得到100优惠券");
+        } else {
+            if(stock > 0) {
+                console.log("普通购买，无优惠券");
+            }else {
+                console.log("库存不足");
+            }
+        }
+    }else if(orderType === 2) {
+        if(isPaid) {
+            console.log("200元定金预购，得到50优惠券");
+        } else {
+            if(stock > 0) {
+                console.log("普通购买，无优惠券");
+            }else {
+                console.log("库存不足");
+            }
+        }
+    }else if(orderType === 2) {
+        if(stock > 0) {
+            console.log("普通购买，无优惠券");
+        }else {
+            console.log("库存不足");
+        }
+    }
+}
+
+order(1, true, 500);
+
+/*职责链 */
+var order500 = function(orderType, isPaid, stock) {
+    if(orderType === 1 && isPaid === true) {
+        console.log("500元定金预购，得到100优惠券");
+    }else {
+        return "nextSuccessor";
+    }
+};
+
+var order200 = function(orderType, isPaid, stock) {
+    if(orderType === 2 && isPaid === true) {
+        console.log("200元定金预购，得到50优惠券");
+    }else {
+        return "nextSuccessor";
+    }
+};
+
+var orderNormal = function(orderType, isPaid, stock) {
+    if(stock > 0) {
+        console.log("普通购买，无优惠券");
+    }else {
+        console.log("库存不足");
+    }
+};
+
+Function.prototype.after = function(fn) {
+    var self = this;
+    return function() {
+        var ret = self.apply(this, arguments);
+        if(ret === "nextSuccessor") {
+            return fn.apply(this, arguments);
+        }
+        return ret;
+    };
+}
+
+var order = order500.after(order200).after(orderNormal);
+order(1, true, 10);//结合AOP
+```
+
+
+
+### 延伸应用
+
+常见的做法其实是优惠卷的案例？
+
+## 策略模式
+
+### 定义
+
+定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。
+基于策略类模式的程序至少由两部分组成。第一个部分是一组策略类，策略类封装了具体的算法，并负责具体的计算过程。第二个部分是环境类Context，Context接收客户的请求，随后把请求委托给某一个策略类。
+
+### 事例
+
+```
+var strategies = {
+    "S": function(salary) {
+        return salary * 4;
+    },
+    "A": function(salary) {
+        return salary * 3;
+    },
+    "B": function(salary) {
+        return salary * 2;
+    }
+};
+
+// 接收请求
+var calculateBonus = function(level, salary) {
+    return strategies[level](salary);
+};
+
+// 测试
+console.log(calculateBonus("S", 20000));
+console.log(calculateBonus("A", 20000));
+console.log(calculateBonus("B", 20000));
+```
+
+### 延伸应用
+
+常见的表单验证js,如：validator.js
+
+# 迭代器模式
+
+## 一句话总结：就是foreach
+
+##定义
+
+> 迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。
+
+## 代码
+
+```js
+var each = function(ary, callback) {
+    for(var i = 0, l = ary.length; i < l; i++) {
+        callback.call(ary[i], i, ary[i]);
+    }   
+};
+each([1, 2, 3], function(i, n) {
+    console.log("当前下标为："+ i + " 当前元素为："+ n );
+});
+```
+
+
+
+##延伸应用
+
+文件上传，根据不同的浏览器获取相应的上传组件对象。(高阶用法，存疑)
+
+# 观察者模式
+
+## 一句话总结就是:就是vue里的emit/on
+
+## 定义
+
+> 观察者模式又叫做发布订阅模式，它定义了一种一对多的关系，让多个观察者对象同时监听某一个主题对象，这个主题对象的状态发生改变时就会通知所有观察着对象。 它是由两类对象组成，主题和观察者，主题负责发布事件，同时观察者通过订阅这些事件来观察该主体，发布者和订阅者是完全解耦的，彼此不知道对方的存在，两者仅仅共享一个自定义事件的名称。
+
+## 代码
+
+```
+var p1 = new Pubsub();
+ p1.on('mm', function (name) {
+     console.log('mm: '+ name);
+ });
+ p1.emit('mm','哈哈哈哈');
+```
+
+
+
+## 应用
+
+MQ
+
+# 状态模式
+
+## 一句话总结就是：有限状态机
+
+## 定义
+
+状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。
+
+## 代码
+
+```js
+// 关灯
+var OffLightState = function(light) {
+    this.light = light;
+};
+// 弱光
+var OffLightState = function(light) {
+    this.light = light;
+};
+// 强光
+var StrongLightState = function(light) {
+    this.light = light;
+};
+
+var Light = function(){
+    /* 开关状态 */
+    this.offLight = new OffLightState(this);
+    this.weakLight = new WeakLightState(this);
+    this.strongLight = new StrongLightState(this);
+    /* 快关按钮 */
+    this.button = null;
+};
+Light.prototype.init = function() {
+    var button = document.createElement("button"),
+        self = this;
+    this.button = document.body.appendChild(button);
+    this.button.innerHTML = '开关';
+    this.currentState = this.offLight;
+    this.button.click = function() {
+        self.currentState.buttonWasPressed();
+    }
+};
+// 让抽象父类的抽象方法直接抛出一个异常（避免状态子类未实现buttonWasPressed方法）
+Light.prototype.buttonWasPressed = function() {
+    throw new Error("父类的buttonWasPressed方法必须被重写");
+};
+Light.prototype.setState = function(newState) {
+    this.currentState = newState;
+};
+
+/* 关灯 */
+OffLightState.prototype = new Light();  // 继承抽象类
+OffLightState.prototype.buttonWasPressed = function() {
+    console.log("关灯！");
+    this.light.setState(this.light.weakLight);
+}
+/* 弱光 */
+WeakLightState.prototype = new Light();
+WeakLightState.prototype.buttonWasPressed = function() {
+    console.log("弱光！");
+    this.light.setState(this.light.strongLight);
+};
+/* 强光 */
+StrongLightState.prototype = new Light();
+StrongLightState.prototype.buttonWasPressed = function() {
+    console.log("强光！");
+    this.light.setState(this.light.offLight);
+};
+```
+
+
+
+## 应用
+
+任意上层应用的状态显示
+
+# 备忘录模式
+
+##一句话总结就是：就是留个备份，出问题了就回滚
+
+## 定义
+
+暂无
+
+## 代码
+
+```js
+
+var Page = function(){
+   var page = 1,
+      cache = {},
+      data;
+   return function( page ){
+      if ( cache[ page ] ){
+               data =  cache[ page ];
+               render( data );
+      }else{
+               Ajax.send( 'cgi.xx.com/xxx', function( data ){
+                   cache[ page ] = data;
+                   render( data );
+               })
+      }
+    }
+}()
+```
+
+## 应用
+
+操作回溯
+
+# 解释器模式
+
+##一句话总结就是：抽象语法树AST
+
+## 定义
+
+```
+如果一种特定类型的问题发生的频率足够高，那么可能就值得将该问题的各个实例表述为一个简单语言中的句子。这样就可以构建一个解释器，该解释器通过解释这些句子来解决该问题。
+```
+
+##代码
+
+
+
+##应用
+
+SQL 
+
+# 访问者模式
+
+## 一句话总结就是：我中有你 你中有我
+
+##定义
+
+访问者模式：针对于对象结构中的元素，定义在不改变对象的前提下访问结构中元素的方法
+
+在访问者模式中，主要包括下面几个角色
+
+1、抽象访问者：抽象类或者接口，声明访问者可以访问哪些元素，具体到程序中就是visit方法中的参数定义哪些对象是可以被访问的。
+
+2、访问者：实现抽象访问者所声明的方法，它影响到访问者访问到一个类后该干什么，要做什么事情。
+
+3、抽象元素类：接口或者抽象类，声明接受哪一类访问者访问，程序上是通过accept方法中的参数来定义的。抽象元素一般有两类方法，一部分是本身的业务逻辑，另外就是允许接收哪类访问者来访问。
+
+4、元素类：实现抽象元素类所声明的accept方法，通常都是visitor.visit(this)，基本上已经形成一种定式了。
+
+5、结构对象：一个元素的容器，一般包含一个容纳多个不同类、不同接口的容器，如List、Set、Map等，在项目中一般很少抽象出这个角色。
+
+## 代码
+
+```
+function Visitor() {  
+  this.visit = function( concreteElement ) {  
+    concreteElement.doSomething();  
+  }  
+}  
+// 元素类  
+function ConceteElement() {  
+  this.doSomething = function() {  
+    console.log("这是一个具体元素");  
+  }  
+  this.accept = function( visitor ) {  
+    visitor.visit(this);  
+  }  
+} 
+// Client  
+var ele = new ConceteElement();  
+var v = new Visitor();  
+ele.accept( v );  
+```
+
+
+
+## 应用
+
+无
+
+# 适配器模式
+
+##一句话就是：不同类型的数据线的转接器
+
+## 定义 
+
+将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作。
+
+## 代码
+
+```
+function PhoneUSBTypecToMicroUSB(Phone) {
+  var _USBTypec = new ChargingCord('USBTypec');
+  var _MicroUSB = new ChargingCord('MicroUSB');
+  if (_USBTypec.check(Phone.getChargingCord())) {
+    Phone.charging = function () {
+      console.log(this.getName());
+      _USBTypec.work();
+      console.log('转接');
+      _MicroUSB.work();
+      console.log('接收');
+    }
+    Phone.getChargingCord = function () {
+      return _MicroUSB;
+    };
+    return Phone;
+  }
+  else {
+    console.log('接口不对无法转换');
+  }
+}
+
+function PhoneMicroUSBToUSBTypec(Phone) {
+  var _USBTypec = new ChargingCord('USBTypec');
+  var _MicroUSB = new ChargingCord('MicroUSB');
+  if (_MicroUSB.check(Phone.getChargingCord())) {
+    Phone.charging = function () {
+      console.log(this.getName());
+      _MicroUSB.work();
+      console.log('转接');
+      _USBTypec.work();
+      console.log('接收');
+    }
+    Phone.getChargingCord = function () {
+      return _USBTypec;
+    };
+    return Phone;
+  }
+  else {
+    console.log('接口不对无法转换');
+  }
+}
+
+function PhoneDeleteInterface(Phone){
+  delete Phone.charging;
+  delete Phone.getChargingCord;
+  return Phone;
+}
+```
+
+
+
+## 应用
+
+在不动应用层的情况下，切换底层、
+
+# 桥接模式
+
+## 一句话就是 中间夹了一个类
+
+## 定义
+
+用桥接模式联结多个类
+
+## 代码
+
+```
+var Class1 =function(a,b,c){
+	this.a =a;
+	this.b = b;
+	this.c = c;
+}
+var Class2 =function(d){
+	this.d = d;
+}
+var BridgeClass =function(a,b,c,d){
+	   this.one = new Class1(a,b,c);
+	   this.two = new Class2(d);
+}
+```
+
+
+
+## 应用
+
+暂无
+
+# 组合模式
+
+## 一句话定义：树状结构，且行为递归执行
+
+##定义
+
+部分-整体模式，它将所有对象组合成树形结构。使得用户只需要操作最上层的接口，就可以对所有成员做相同的操作。
+
+## 代码
+
+```
+$( 'body' ).unbind( '*' );//触发所有的dom解绑定事件
+```
+
+
+
+## 应用
+
+jqdom对象
+
+# 装饰模式
+
+## 一句话总结：珍珠奶茶
+
+## 定义
+
+** 装饰者(decorator) **模式能够在不改变对象自身的基础上，在程序运行期间给对像动态的添加职责。与继承相比，装饰者是一种更轻便灵活的做法。
+
+## 代码
+
+>
+
+```
+var Plan1 = {
+    fire: function () {
+        console.log('发射普通的子弹');
+    }
+};
+
+var missileDecorator= function () {
+    console.log('发射导弹!');
+};
+
+var fire = Plan1.fire;
+
+Plan1.fire=function () {
+    fire();
+    missileDecorator();
+};
+
+Plan1.fire();
+```
+
+## 应用
+
+AOP
+
+# 外观模式
+
+## 一句话总结就是:减少外部需要记忆的api
+
+## 定义
+
+外观模式提供一个高层接口，这个接口使得客户端或子系统更加方便调用。
+
+## 代码
+
+> var getName = function(){
+>
+>   return ''svenzeng"
+>
+> }
+>
+> var getSex = function(){
+>
+>    return 'man'
+>
+> }
+>
+> var getUserInfo = function(){
+>
+>   var info = a() + b();
+>
+>   return info;
+>
+> }
+
+## 应用
+
+快餐
+
+# 享元模式
+
+## 一句话总结就是：虚拟列表，只创建你看得见的dom
+
+## 定义
+
+提供一些共享的对象以便重复利用. 
+
+## 代码
+
+```
+ var getDiv = (function(){
+    var created = [];
+    var create = function(){
+          return document.body.appendChild( document.createElement( 'div' ) );
+    }
+    var get = function(){
+         if ( created.length ){
+              return created.shift();
+          }else{
+                return create();
+           }
+     }
+/* 一个假设的事件，用来监听刚消失在视线外的div，实际上可以通过监听滚                                     动条位置来实现 */
+      userInfoContainer.disappear(function( div ){
+              created.push( div );
+        })
+ })()
+  var div = getDiv();
+  div.innerHTML = "${userinfo}";
+```
+
+
+
+##应用
+
+虚拟列表，只创建你看得见的dom
+
+# 代理模式
+
+## 一句话就是：代理人先整理需求
+
+## 定义
+
+代理模式的定义是把对一个对象的访问, 交给另一个代理对象来操作.
+
+## 代码
+
+```
+var request = proxy.get( 'cgi.xx.com/xxx' );
+ 
+request.send();
+ 
+request.done(function(){
+ 
+});
+```
+
+
+
+## 应用
+
+实际的编程中， 这种因为性能问题使用代理模式的机会是非常多的。比如频繁的访问dom节点, 频繁的请求远程资源. 可以把操作先存到一个缓冲区, 然后自己选择真正的触发时机.
+
+
+                
